@@ -40,6 +40,7 @@ public class Pratik_01_NotOrtalamasiHesapla {
 
 
         }
+        scan.close();
     }
 
 }

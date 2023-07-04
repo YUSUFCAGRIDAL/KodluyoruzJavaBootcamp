@@ -33,6 +33,6 @@ public class Pratik_06_HesapMakinasi {
         }
 
 
-
+        input.close();
     }
 }

@@ -3,7 +3,7 @@ package hafta_01;
 import java.util.Scanner;
 
 public class Odev_11_ToplamProgrami {
-import java.util.Scanner;
+
 
 
         public static void main(String[] args) {

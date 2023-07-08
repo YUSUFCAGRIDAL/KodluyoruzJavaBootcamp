@@ -16,6 +16,20 @@ public class Pratik_01_Palindrome {
         return (originalSayi == tersi);
     }
 
+    public static boolean isPalindrom(double sayi1){
+           double tersi=0.0;
+           double kalan=0.0;
+           double original=sayi1;
+
+           while (sayi1!=0){
+               kalan = sayi1%10;
+               tersi=tersi*10+kalan;
+               sayi1=sayi1/10;
+           }
+           return (original==tersi);
+
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

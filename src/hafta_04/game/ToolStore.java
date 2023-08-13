@@ -7,7 +7,7 @@ public class ToolStore extends NormalLoc{
 
     @Override
     public boolean onLocation() {
-        System.out.println("Mağazaya hoşgeldiniz");
+        System.out.println("----------- Mağazaya hoşgeldiniz ! -------------");
         return true;
     }
 }

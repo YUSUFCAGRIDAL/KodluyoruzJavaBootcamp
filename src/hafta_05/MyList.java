@@ -1,6 +1,6 @@
 package hafta_05;
 
-public class MyList {
+public class MyList<I extends Number> {
     public class Mylist<T> {
         private int capacity;
         private T[] genericArray;

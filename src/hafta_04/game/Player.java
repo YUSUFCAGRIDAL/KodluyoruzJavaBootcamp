@@ -3,98 +3,93 @@ package hafta_04.game;
 import java.util.Scanner;
 
 public class Player {
-    private int health;
-    private int damage;
-    private int money;
     private String name;
-    private String charName;
-    private Scanner input = new Scanner(System.in);
+    private int damage;
+    private int health;
+    private int money;
 
-    public Player(String name) {
+    public Player(String name){
         this.name = name;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
-    public int getMoney() {
-        return money;
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCharName() {
-        return charName;
-    }
-
-    public void setCharName(String charName) {
-        this.charName = charName;
-    }
-
-    public void selectChar() {
-        GameChar[] charList = {new Samurai(), new Archer(), new Knight()};
-        System.out.println("Karakterler");
-        System.out.println("-----------------------------------------------------------------------------");
-        for (GameChar gameChar : charList) {
-            System.out.println("ID : " + gameChar.getId() +
-                    "\tKarakter: " + gameChar.getName() +
-                    " \t\t Hasar: " + gameChar.getDamage() + "  " +
-                    " \t\t Sağlık: " + gameChar.getHealth() +
-                    " \t\t Para: " + gameChar.getMoney());
+    public void selectChar(){
+        Scanner input = new Scanner(System.in);
+        GameChar [] gameChar = {new Samurai(), new Archer(), new Knighter()};
+        System.out.println("--------------- Characters ---------------");
+        for(GameChar character : gameChar){
+            System.out.println("ID: \t" + character.getID() +
+                    "\tName: \t" + character.getName() +
+                    "\tDamage: \t" + character.getDamage() +
+                    "\tHealth: \t" + character.getHealth() +
+                    "\tMoney: \t" + character.getMoney());
         }
-        System.out.println("-----------------------------------------------------------------------------");
-        System.out.println("Lütfen bir karakter seçiniz !");
-        int selectChar = input.nextInt();
-        switch (selectChar) {
+        System.out.print("Please choose to character: ");
+        int choose = input.nextInt();
+        System.out.println("-------------------------");
+        switch(choose){
             case 1:
-                initPlayer(new Samurai());
+                initPlayer(new Samurai ());
                 break;
             case 2:
                 initPlayer(new Archer());
                 break;
             case 3:
-                initPlayer(new Knight());
+                initPlayer(new Knighter());
                 break;
             default:
                 initPlayer(new Samurai());
+                break;
         }
-
-        System.out.println("Karakter : " + this.getCharName() +
-                " , Hasar: " + this.getDamage() +
-                " , Sağlık: " + this.getHealth() +
-                " , Para: " + this.getMoney());
-
     }
 
-
-
-    public void initPlayer(GameChar gameChar) {
+    public void initPlayer(GameChar gameChar){
+        this.setName(gameChar.getName());
         this.setDamage(gameChar.getDamage());
         this.setHealth(gameChar.getHealth());
         this.setMoney(gameChar.getMoney());
-        this.setCharName(gameChar.getName());
+
+        System.out.println(" Character Name: " + getName() +
+                "\n Character Damage: " + getDamage() +
+                "\n Character Health: " + getHealth() +
+                "\n Character Money: " + getMoney());
+
+        System.out.println("-------------------------");
+
     }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public int getDamage(){
+        return this.damage;
+    }
+
+    public void setDamage(int damage){
+        this.damage = damage;
+    }
+
+    public int getHealth(){
+        return this.health;
+    }
+
+    public void setHealth(int health){
+        this.health = health;
+    }
+
+    public int getMoney(){
+        return this.money;
+    }
+
+    public void setMoney(int money){
+        this.money = money;
+    }
+
+
+
+
 }

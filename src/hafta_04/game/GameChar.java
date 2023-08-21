@@ -1,18 +1,33 @@
 package hafta_04.game;
 
 public abstract class GameChar {
-    private int id;
+    private int ID;
     private String name;
     private int damage;
     private int health;
     private int money;
 
-    public GameChar(int id, String name, int damage, int health, int money) {
-        this.id=id;
-        this.name= name;
+    public GameChar(int ID, String name, int damage,int health,int money){
+        this.ID = ID;
+        this.name = name;
         this.damage = damage;
         this.health = health;
         this.money = money;
+    };
+
+    public int getID(){
+        return this.ID;
+    }
+    public void setID(int ID){
+        this.ID = ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getDamage() {
@@ -37,21 +52,5 @@ public abstract class GameChar {
 
     public void setMoney(int money) {
         this.money = money;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

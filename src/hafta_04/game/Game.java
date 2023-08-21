@@ -1,51 +1,55 @@
 package hafta_04.game;
 
-import java.util.Scanner;
+import hafta_04.game.*;
 
+import java.util.*;
 public class Game {
     private Scanner input = new Scanner(System.in);
-
-
     public void start(){
-        System.out.println("Macera oyununa hoşgeldiniz");
-        System.out.println("Lütfen isim giriniz : ");
-   //     String playerName = input.nextLine(); normalde kullanıcıdan alıyoruz ama şimdilik test için hız adına kendi adımızı yazdık
-        Player player = new Player("Yusuf");
-        System.out.println("Sayın "+player.getName()+" bu karanlık ve sisli adaya hoşgeldiniz !");
-        System.out.println("Burada yaşananların hepsi gerçek !");
-        System.out.println("Lütfen karakter seçiniz !");
-        player.selectChar();
+        System.out.println("Welcome to War Game!");
+        System.out.print("Please enter the name: ");
+        String playerName = input.nextLine();
+        System.out.println("Hello " + playerName + " , welcome to this tough battle! May luck be with you.");
+        Player p1 = new Player(playerName);
+        p1.selectChar();
 
         Location location = null;
-        while (true){
-            System.out.println();
-            System.out.println("###################   Bölgeler   ################### ");
-            System.out.println();
-            System.out.println("1- Güvenli Ev --> Burası sizin için güvenli bir ev, düşman yoktur !");
-            System.out.println("2- Mağaza --> Silah veya Zırh satın alabilirsiniz !");
-            System.out.println("Lütfen gitmek istediğiniz bölgeyi seçiniz :  ");
-            int selectLoc = input.nextInt();
-            switch (selectLoc){
+        boolean isDead = false;
+        while(!isDead){
+            System.out.println("--------------- Locations ---------------");
+            System.out.println("1) Safe House\n2) Tool Store\n3) Forest\n4) Cave\n5) River");
+            System.out.print("Please choose where you want to go: ");
+            int locChoose = input.nextInt();
+
+            switch (locChoose){
                 case 1:
-                    location = new SafeHouse(player);
+                    location = new SafeHouse(p1);
                     break;
                 case 2:
-                    location = new ToolStore(player);
+                    location = new ToolStore(p1);
+                    break;
+
+                case 3:
+                    location = new Forest(p1);
+                    break;
+                case 4:
+                    location = new Cave(p1);
+                    break;
+                case 5:
+                    location = new River(p1);
                     break;
                 default:
-                    location = new SafeHouse(player);
+                    location = new SafeHouse(p1);
+                    break;
             }
 
-            if(!location.onLocation())
-            {
-                System.out.println("GAME OVER!");
-                break;
-        }
-
+            if(!location.onLocation()){
+                System.out.println("GAME OVER " + p1.getName() + " character is dead");
+                isDead = true;
+            }
 
         }
 
     }
-
 
 }
